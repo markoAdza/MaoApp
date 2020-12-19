@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResponse(JSONArray response) {
             ArrayList<String> data = new ArrayList<>();
+            data.add("Food,  Food Type,  Menu Type,  Rating");
 
             for (int i = 0; i < response.length(); i++) {
                 try {
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     String menuType = object.getString("menuType");
                     int rating = object.getInt("avgRating");
 
-                    data.add(name + " " + foodType + " " + menuType + " " + rating);
+                    data.add(name + ",  " + foodType + ",  " + menuType + ",  " + rating);
                 }catch (JSONException e){
                     e.printStackTrace();
                     return;

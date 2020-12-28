@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -27,13 +30,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class AddMenuActivity extends AppCompatActivity {
+public class AddMenuActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private EditText foodName, foodType, menuType;
+    private EditText foodName;
     private TextView status;
     private RequestQueue requestQueue;
     private String url = "https://mao-dev.azurewebsites.net/api/v1/Menu";
 
+    private static final String[] foodTypes = {"main", "soup", "dessert"};
+    private String selectedFoodType = "main";
+
+    private static final String[] menuTypes = { "meat", "vegan", "no sugar", "no alergens"};
+    private String selectedMenuType = "meat";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +49,58 @@ public class AddMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_menu);
 
         foodName = (EditText) findViewById(R.id.foodNameInput);
-        foodType = (EditText) findViewById(R.id.foodTypeInput);
-        menuType = (EditText) findViewById(R.id.menuTypeInput);
-
         status = (TextView) findViewById(R.id.statusText);
-
         requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        // Initialize dropdowns
+
+        ArrayAdapter<String>adapter1 = new ArrayAdapter<String>(AddMenuActivity.this,
+                android.R.layout.simple_spinner_item,foodTypes) {
+        };
+
+        Spinner foodTypeDropdown = (Spinner) findViewById(R.id.foodTypeDropdown);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        foodTypeDropdown.setAdapter(adapter1);
+        foodTypeDropdown.setOnItemSelectedListener(this);
+
+        ArrayAdapter<String>adapter2 = new ArrayAdapter<String>(AddMenuActivity.this,
+                android.R.layout.simple_spinner_item,menuTypes) {
+        };
+
+        Spinner menuTypeDropdown = (Spinner) findViewById(R.id.menuTypeDropdown);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        menuTypeDropdown.setAdapter(adapter2);
+        menuTypeDropdown.setOnItemSelectedListener(this);
+
+
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+        switch(parent.getId()){
+            case R.id.foodTypeDropdown:
+                this.selectedFoodType = foodTypes[position];
+                break;
+            case R.id.menuTypeDropdown:
+                this.selectedMenuType = menuTypes[position];
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // TODO Auto-generated method stub
+    }
+
+
 
     public void addMenu(View view) {
 
         try {
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("foodName", foodName.getText());
-            jsonBody.put("foodType", foodType.getText());
-            jsonBody.put("menuType", menuType.getText());
+            jsonBody.put("foodType", selectedFoodType);
+            jsonBody.put("menuType", selectedMenuType);
 
             final String mRequestBody = jsonBody.toString();
 

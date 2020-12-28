@@ -15,6 +15,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,34 +30,32 @@
             android:inputType="textPersonName"
             android:text="Add food name" />
 
-        <EditText
-            android:id="@+id/foodTypeInput"
+        <Spinner
+            android:layout_marginTop="15dp"
+            android:id="@+id/foodTypeDropdown"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Add food type" />
+            android:layout_height="49dp" />
 
-        <EditText
-            android:id="@+id/menuTypeInput"
+        <Spinner
+            android:layout_marginTop="15dp"
+            android:id="@+id/menuTypeDropdown"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Add menu type" />
+            android:layout_height="48dp" />
 
         <Button
+            android:layout_marginTop="15dp"
             android:id="@+id/addMenuButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add menu"
             android:onClick="addMenu"
-            />
+            android:text="Add menu" />
 
         <TextView
+            android:layout_marginTop="15dp"
             android:id="@+id/statusText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="status ..." />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -81,3 +81,9 @@ public class MainActivity extends AppCompatActivity {
     };
 
 }
+//
+//{
+//        "foodName": "FriedChocolates",
+//        "foodType": "dessert",
+//        "menuType": "vegan"
+//        }

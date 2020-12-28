@@ -2,11 +2,13 @@ package com.example.maoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -72,6 +74,9 @@ public class AddMenuActivity extends AppCompatActivity implements AdapterView.On
         menuTypeDropdown.setAdapter(adapter2);
         menuTypeDropdown.setOnItemSelectedListener(this);
 
+        // Configure 'back' button
+
+        configureSwitchScreenButton();
 
     }
 
@@ -158,6 +163,17 @@ public class AddMenuActivity extends AppCompatActivity implements AdapterView.On
 
 
     }
+
+    private void configureSwitchScreenButton() {
+        Button btn = (Button) findViewById(R.id.backButton);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AddMenuActivity.this, MainActivity.class ));
+            }
+        });
+    }
+
 
 }
 

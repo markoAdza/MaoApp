@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.RequestQueue;
@@ -33,7 +34,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         jedi = (TextView) findViewById(R.id.jedi);
+
+
+        // prikazi Jedi
+        JsonArrayRequest request = new JsonArrayRequest(url, jsonArrayListener, errorListener);
+        requestQueue.add(request);
+
+        // switch view button
+        configureSwitchScreenButton();
     }
+
 
     public void prikaziJedi(View view){
         if(view != null){
@@ -80,10 +90,15 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private void configureSwitchScreenButton() {
+        System.out.println("AYYY");
+        Button btn = (Button) findViewById(R.id.switchToAddMenuButton);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, AddMenuActivity.class));
+            }
+        });
+    }
+
 }
-//
-//{
-//        "foodName": "FriedChocolates",
-//        "foodType": "dessert",
-//        "menuType": "vegan"
-//        }

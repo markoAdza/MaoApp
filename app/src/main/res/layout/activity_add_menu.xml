@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backg"
     tools:context=".AddMenuActivity">
 
     <LinearLayout
@@ -28,34 +29,49 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Add food name" />
+            android:text="Add food name"
+            android:textColor="#3C3C3C" />
+
 
         <Spinner
             android:layout_marginTop="15dp"
             android:id="@+id/foodTypeDropdown"
             android:layout_width="match_parent"
-            android:layout_height="49dp" />
+            android:layout_height="49dp"
+            android:theme="@style/spinnerTheme"
+            />
 
         <Spinner
             android:layout_marginTop="15dp"
             android:id="@+id/menuTypeDropdown"
             android:layout_width="match_parent"
-            android:layout_height="48dp" />
+            android:layout_height="48dp"
+            android:theme="@style/spinnerTheme"
+            />
 
         <Button
-            android:layout_marginTop="15dp"
             android:id="@+id/addMenuButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:onClick="addMenu"
-            android:text="Add menu" />
+            android:text="Add" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="back" />
 
         <TextView
-            android:layout_marginTop="15dp"
             android:id="@+id/statusText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="status ..." />
+            android:layout_marginTop="15dp"
+            android:text="status ..."
+            android:textColor="#3C3C3C" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+

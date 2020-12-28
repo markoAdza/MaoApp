@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/prikaziJedi"
-        android:layout_width="184dp"
+        android:layout_width="185dp"
         android:layout_height="54dp"
         android:onClick="prikaziJedi"
         android:text="Prikazi jedi"

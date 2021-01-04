@@ -54,14 +54,13 @@ public class AddMenuActivity extends AppCompatActivity implements AdapterView.On
 //        status = (TextView) findViewById(R.id.statusText);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
+
         // Initialize dropdowns
 
         ArrayAdapter<String>adapter1 = new ArrayAdapter<String>(AddMenuActivity.this,
-                android.R.layout.simple_spinner_item,foodTypes) {
+                R.layout.color_spinner_layout,foodTypes) {
         };
-
-
-
+        adapter1.setDropDownViewResource(R.layout.spinner_dropdown_layout);
 
         Spinner foodTypeDropdown = (Spinner) findViewById(R.id.foodTypeDropdown);
         adapter1.setDropDownViewResource(android.R.layout.simple_list_item_1);
@@ -70,9 +69,12 @@ public class AddMenuActivity extends AppCompatActivity implements AdapterView.On
         foodTypeDropdown.setOnItemSelectedListener(this);
 
 
+
+
         ArrayAdapter<String>adapter2 = new ArrayAdapter<String>(AddMenuActivity.this,
-                android.R.layout.simple_spinner_item,menuTypes) {
+                R.layout.color_spinner_layout,menuTypes) {
         };
+        adapter2.setDropDownViewResource(R.layout.spinner_dropdown_layout);
 
         Spinner menuTypeDropdown = (Spinner) findViewById(R.id.menuTypeDropdown);
         adapter2.setDropDownViewResource(android.R.layout.simple_list_item_1);

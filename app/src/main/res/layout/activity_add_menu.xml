@@ -38,14 +38,13 @@
             android:layout_width="match_parent"
             android:layout_height="49dp"
             android:layout_marginTop="15dp"
-            android:theme="@style/spinnerTheme" />
+            />
 
         <Spinner
             android:layout_marginTop="15dp"
             android:id="@+id/menuTypeDropdown"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:theme="@style/spinnerTheme"
             />
 
         <Button

@@ -34,12 +34,11 @@
 
 
         <Spinner
-            android:layout_marginTop="15dp"
             android:id="@+id/foodTypeDropdown"
             android:layout_width="match_parent"
             android:layout_height="49dp"
-            android:theme="@style/spinnerTheme"
-            />
+            android:layout_marginTop="15dp"
+            android:theme="@style/spinnerTheme" />
 
         <Spinner
             android:layout_marginTop="15dp"
@@ -62,14 +61,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="back" />
-
-        <TextView
-            android:id="@+id/statusText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="status ..."
-            android:textColor="#3C3C3C" />
 
     </LinearLayout>
 

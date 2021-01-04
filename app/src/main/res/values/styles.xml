@@ -3,4 +3,8 @@
     <style name="spinnerTheme">
         <item name="android:textColor">@color/purple_200</item>
     </style>
+
+    <style name="CustomTheme" parent="android:Theme.Black">
+        <item name="android:textColor">#ffff00</item>
+    </style>
 </resources>

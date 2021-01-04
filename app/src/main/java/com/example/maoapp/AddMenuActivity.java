@@ -51,7 +51,7 @@ public class AddMenuActivity extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_add_menu);
 
         foodName = (EditText) findViewById(R.id.foodNameInput);
-        status = (TextView) findViewById(R.id.statusText);
+//        status = (TextView) findViewById(R.id.statusText);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         // Initialize dropdowns
@@ -60,17 +60,22 @@ public class AddMenuActivity extends AppCompatActivity implements AdapterView.On
                 android.R.layout.simple_spinner_item,foodTypes) {
         };
 
+
+
+
         Spinner foodTypeDropdown = (Spinner) findViewById(R.id.foodTypeDropdown);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_list_item_1);
+
         foodTypeDropdown.setAdapter(adapter1);
         foodTypeDropdown.setOnItemSelectedListener(this);
+
 
         ArrayAdapter<String>adapter2 = new ArrayAdapter<String>(AddMenuActivity.this,
                 android.R.layout.simple_spinner_item,menuTypes) {
         };
 
         Spinner menuTypeDropdown = (Spinner) findViewById(R.id.menuTypeDropdown);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_list_item_1);
         menuTypeDropdown.setAdapter(adapter2);
         menuTypeDropdown.setOnItemSelectedListener(this);
 
@@ -109,7 +114,7 @@ public class AddMenuActivity extends AppCompatActivity implements AdapterView.On
 
             final String mRequestBody = jsonBody.toString();
 
-            status.setText(mRequestBody);
+//            status.setText(mRequestBody);
 
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -141,7 +146,7 @@ public class AddMenuActivity extends AppCompatActivity implements AdapterView.On
                     String responseString = "";
                     if (response != null) {
                         responseString = String.valueOf(response.statusCode);
-                        status.setText(responseString);
+//                        status.setText(responseString);
 
                     }
                     return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
